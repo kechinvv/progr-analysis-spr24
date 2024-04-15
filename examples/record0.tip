@@ -1,7 +1,10 @@
 main() {
-    var n, r1;
+    var n, r1, b;
+    b = alloc {g:42, h:87};
     n = {p: 5, q: 2};
     r1 = n.p; // output 5
     n.q = 3;
+    (*b).g = 117;
     return r1;
 }
+

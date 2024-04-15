@@ -177,10 +177,10 @@ object Tip extends App {
       res match {
         case Failure(e: ParseError) =>
           log.error(s"Failure parsing the program: $file\n${tipParser.formatError(e)}")
-          sys.exit(1)
+//          sys.exit(1)
         case Failure(e: Throwable) =>
           log.error(s"Failure parsing the program: $file", e)
-          sys.exit(1)
+//          sys.exit(1)
         case Success(parsedNode: AProgram) =>
           val programNode =
             if (options.normalizer == NoNormalizer) parsedNode
@@ -304,10 +304,10 @@ object Tip extends App {
     } catch {
       case e: TipProgramException =>
         log.error(e.getMessage)
-        sys.exit(1)
+//        sys.exit(1)
       case e: Exception =>
         log.error(s"Internal error: ${e.getMessage}", e)
-        sys.exit(1)
+//        sys.exit(1)
     }
   }
 
@@ -354,7 +354,7 @@ object Tip extends App {
         case _ =>
           log.error(s"Unrecognized option $s")
           printUsage()
-          sys.exit(1)
+//          sys.exit(1)
       } else if (i == args.length - 1 && options.source != null)
       options.out = new File(s)
     else if ((i == args.length - 1 && options.source == null) || i == args.length - 2)
@@ -362,13 +362,13 @@ object Tip extends App {
     else {
       log.error(s"Unexpected argument $s")
       printUsage()
-      sys.exit(1)
+//      sys.exit(1)
     }
     i += 1
   }
   if (!options.check()) {
     printUsage()
-    sys.exit(1)
+//    sys.exit(1)
   }
   val sources = if (options.source.isDirectory) {
     // directory provided, get the .tip files
