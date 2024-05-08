@@ -19,7 +19,7 @@ trait IntervalAnalysisWidening extends ValueAnalysisMisc with Dependencies[CfgNo
   /**
     * Int values occurring in the program, plus -infinity and +infinity.
     */
-  private val B = cfg.nodes.flatMap { n =>
+  val B: Set[Num] = cfg.nodes.flatMap { n =>
     n.appearingConstants.map { x =>
       IntNum(x.value): Num
     } + MInf + PInf
